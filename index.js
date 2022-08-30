@@ -1,27 +1,40 @@
 
 const employee = {
-    name: "Billy",
-    streetAddress: "23 Valley"
-    }
+  name: "Kienje",
+  streetAddress: "74,Rongai"
 
-function updateEmployeeWithKeyAndValue(employee, key, value){
-    return {...employee,
-        name: "Sam",
-        streetAddress: "11 Broadway"
-    }
+};
+
+function updateEmployeeWithKeyAndValue(employee, key, value) {
+
+  // Alternate using ES6 Spread operators:
+  // return { ...employee, ...{ [key]: value } }
+  return Object.assign({}, employee, { [key]: value });
+  
 }
 
 function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value) {
-        employee.streetAddress = "12 Broadway"
-        return employee;
+  employee[key] = value;
+
+
+  return employee;
+
 }
 
-function deleteFromEmployeeByKey(employee, key){
-    const newEmployee = {...employee};
-    delete newEmployee.name;
-    return newEmployee 
-      
-}function destructivelyDeleteFromEmployeeByKey(employee, key){
-    delete employee.name;
-    return employee;
+function deleteFromEmployeeByKey(employee, key) {
+
+  // Alternate using ES6 Spread operators:
+  // const newObj = { ...employee }
+  const newObj = Object.assign({}, employee);
+
+
+  delete newObj[key];
+
+  return newObj;
+}
+
+function destructivelyDeleteFromEmployeeByKey(employee, key) {
+  delete employee[key];
+
+  return employee;
 }
